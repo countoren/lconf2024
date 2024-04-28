@@ -1,0 +1,14 @@
+/workspaces/Fable/temp/fable-library-rust/target/debug/deps/libuuid-b78deda82e7c9166.rmeta: /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/lib.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/builder.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/error.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/parser.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/fmt.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/timestamp.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/v4.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/rng.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/external.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/macros.rs
+
+/workspaces/Fable/temp/fable-library-rust/target/debug/deps/uuid-b78deda82e7c9166.d: /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/lib.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/builder.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/error.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/parser.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/fmt.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/timestamp.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/v4.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/rng.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/external.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/macros.rs
+
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/lib.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/builder.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/error.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/parser.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/fmt.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/timestamp.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/v4.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/rng.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/external.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.7.0/src/macros.rs:

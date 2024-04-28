@@ -1,0 +1,11 @@
+/workspaces/Fable/temp/fable-library-rust/target/debug/deps/libarrayvec-d31956562be1f257.rmeta: /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/lib.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/arrayvec_impl.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/arrayvec.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/array_string.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/char.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/errors.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/utils.rs
+
+/workspaces/Fable/temp/fable-library-rust/target/debug/deps/arrayvec-d31956562be1f257.d: /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/lib.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/arrayvec_impl.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/arrayvec.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/array_string.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/char.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/errors.rs /home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/utils.rs
+
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/lib.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/arrayvec_impl.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/arrayvec.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/array_string.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/char.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/errors.rs:
+/home/vscode/.cargo/registry/src/index.crates.io-6f17d22bba15001f/arrayvec-0.7.4/src/utils.rs:
