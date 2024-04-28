@@ -5,12 +5,20 @@
   commands = import ./commands.nix { inherit pkgs; };
   in
   {
-    packages.${system}.default = commands.default;
+    packages.${system} = {
+      start = commands.bin.start;
+      default = commands;
+    };
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
-        python3
+        reveal-md
         commands
+
+        playwright
+        carbon-now-cli
+        main
       ];
     };
+
   };
 }
