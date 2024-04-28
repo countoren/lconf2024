@@ -5,12 +5,13 @@
   in
   {
     packages.${system}.default = pkgs.writeShellScriptBin "run" ''
-          nix develop -c -- python main.py
+          nix develop -c -- node server.js
     '';
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
-        python3
+        nodejs
       ];
     };
+
   };
 }

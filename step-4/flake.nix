@@ -5,19 +5,21 @@
   in
   {
     packages.${system} = {
-      # try run: nix run .#run-py to get python not exists error
-      run-py = pkgs.writeShellScriptBin "run-py" ''
-        python main.py
+      start-server = pkgs.writeShellScript "run-server" ''
+          node server.js
       '';
-      # try run: nix run
+      # nix run should still start the service
       default = pkgs.writeShellScriptBin "run" ''
-        nix develop -c -- ${self.packages.${system}.run-py}/bin/run-py
+          nix develop -c -- ${self.packages.${system}.start-server}
       '';
     };
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
-        python3
+        nodejs
+        # this wont work anymore becuase it is not a folder that contains bin with exectuable
+        # self.packages.${system}.start-server
       ];
     };
+
   };
 }

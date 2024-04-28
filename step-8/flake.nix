@@ -5,15 +5,13 @@
   commands = import ./commands.nix { inherit pkgs; };
   in
   {
-    packages.${system}= {
-      start-server = commands.start-server;
-      default = commands.default;
-    };
+    packages.${system}.default = commands;
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
         nodejs
-        # we would like commands here
+        commands
       ];
+      shellHook = commands.set.welcome;
     };
   };
 }

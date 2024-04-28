@@ -1,5 +1,4 @@
-{ pkgs ? import <nixpkgs> {}
-}:
+{ pkgs ? import <nixpkgs> {} }:
 let commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
 {
     start-server = ''
@@ -9,8 +8,4 @@ let commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
         nix develop -c -- ${self.start-server}
     '';
 });
-in pkgs.symlinkJoin rec {
-  name = "default";
-  passthru.bin = pkgs.lib.mapAttrs pkgs.writeShellScriptBin commands;
-  paths = pkgs.lib.attrValues passthru.bin;
-}
+in pkgs.lib.mapAttrs (key: command: pkgs.writeShellScriptBin name command) commands

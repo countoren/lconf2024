@@ -8,6 +8,5 @@
       buildInputs = with pkgs; [
       ];
     };
-
   };
 }
