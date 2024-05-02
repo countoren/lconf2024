@@ -1,10 +1,5 @@
 { pkgs ? import <nixpkgs> {}
 }:
-/*
-$ nix-build
-$ ./result/bin/rust-cli
-Hello, world!
-*/
 pkgs.rustPlatform.buildRustPackage {
   name = "rust-cli";
   src = ./.;

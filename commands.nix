@@ -2,8 +2,16 @@
 , prefix ? "b2n"
 }:
 let 
+  #helpers
+  file = stepNum: { filename, extension, focus?"" }:  ''
+### ${filename}.${extension}
+```${extension} ${focus}
+${builtins.readFile ./step-${stepNum}/${filename}.${extension}}
+```
+  '';
+
   commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
-{
+  {
     welcome = ''
       ${pkgs.figlet}/bin/figlet 'From Nix To Bash'
       echo 'press ${prefix}-<TAB><TAB> to see all the commands'
@@ -23,7 +31,15 @@ let
 
     start = ''
       ${self.create-slides} && \
-      ${self.reveal} slides.md  --highlight-theme github
+      ${self.reveal} slides.md --highlight-theme github
+    '';
+    create-css = ''
+      cp ${pkgs.writeTextFile {
+        name = "slides.md"; 
+        text = ''
+        '';
+      }} style.css
+
     '';
     create-slides = ''
       cp ${pkgs.writeTextFile {
@@ -36,126 +52,150 @@ separator: <!--s-->
 verticalSeparator: <!--v-->
 ---
 
+<style>
+.code {
+    width: 100%; /* Adjust the width as needed */
+    margin: auto; /* Center the code block */
+}
+</style>
 # From Bash To Nix
 
-Note: 
+Note:  
 - wellcome
 - presenting myself
+
+<!--s-->
+## About Me
+
+- 👋 **Hello everyone!** I am **Oren**, 
+  You can find me on Github, Twitch, Youtube, Gmail as **CountOren**.
+- 💻 **Experience:** 13 years of software engineering: 
+  Nix, F#, C#, C++, Webs, Haskell, Rust, Bash, Linux tools
+- 👷‍♂️ **Working For:** Carlson Software, We do:
+  Mining Engineering, Civil Engineering, Embeeded Engineering...
+- 🧑‍💻 Focused on **Nix** and functional programming to control them all
+- 👨‍👧‍👦  Proud Husband and father of three.
+
+
+<!--s-->
+## Talk Road Map
+
+- How to can use projects/exectuables as variables of FP language
+- The Command Pattern
+- Using the Command Pattern to Glue: NodeJS with F# and Rust
+
+note: 
 - what is bash? glue lang
 
-
 <!--s-->
-![ls](./images/glue-man.jpeg) <!-- .element width="65%" -->
+![nix](./images/glue-man.jpeg) <!-- .element width="65%" -->
 
-Note:
+note:
 - what is nix? super glue lang
-- what is the problem with bash only
-- Without nix it is a lot harder to leverage different tools from different enviornoments.
+- bash being imprative harder to combine
+- sequence of commands ,manual step in between like installing
+- nix lets you define all the dependencies
+- this called nixfying a project 
+- where should i do my side effects in nix?
+- all the commands into one command
 
 <!--s-->
-### flake.nix
-```nix
-${builtins.readFile ./step-1/flake.nix}
-```
-Notes:
-- describe flake 
+${file "1" {filename = "flake"; extension = "nix"; /*focus = "[|3-6,14|5-7]"; */}}
+note:
+- Flakes are the notice board and it gives a heads up what is in the project
 - Flake allows us to use nix and its packages with a lock file 
 - Flake allows you to describe an entire Git repository as a reliable collection of packages:
   - dev environments that contains dependecies related to your project 
       this is usually a good starting point when you try to "discover" a project 
+  - fully nixified packages of the reporostiry
+<!--v-->
+${file "2" {filename = "flake"; extension = "nix"; }}
+note:
+- lets pick the nodejs eco system to start with 
+<!--v-->
+${file "2" {filename = "bash"; extension = "sh"; }}
+note:
+- here we run nix develop
+- here we are assuming that the user that uses
+our repo will know this commands exists
+- and there are more then one command
+- it will be nice to have them documented, or even better have them has one 
+known command to serve as entry point
+<!--v-->
+${file "3" {filename = "server"; extension = "js"; }}
+<!--s-->
+${let step = file "3"; in ''
+${step {filename = "flake"; extension = "nix"; }}
+note:
+- lets try to solve this by adding a nix default package to our flake
+- this is a package that creates a shell script exectuable
+- inside that script it contains the commands that we were executing manually before
+- it is a bit meta 
+- it will run nix develop 
+- which will search a flake file in the current folder or in one of the parent folders 
+and will try to run in the default devShell defined in it the node start server command
+- lets see how the actual shell script looks like
+---
+- we can even add the package into our dev shell...
+- when adding any package to the buildInputs it could be our default or the nodejs package 
+  nix will append the bin folder to the PATH of the dev shell
 
-  - definition of the current project, its dependencies and how to build  
-  - flake notice board and it gives a heads up what is in the project
+- there is still an issue here we have infused 2 commands in one: node server.js and nix develop...
 <!--v-->
-### flake.nix
-```nix
-${builtins.readFile ./step-2/flake.nix}
-```
-<!--v-->
-```console
-${builtins.readFile ./step-2/bash.sh}
-```
-<!--v-->
-```js
-${builtins.readFile ./step-3/server.js}
-```
-<!--v-->
-
-![ls](./images/i.png)
+${step {filename = "bash"; extension = "sh"; }}
+note:
+- nix build
+- similar to nix develop it will search for the flake
+- and will evualate and build the default package in it
+- this process run in "closed" nix building enviorment 
+- which allows fetching of source code,configuring, patching, building
+- this build process must end by creating a folder or a file in nix store
+- when done by default it will create for us a result symlink to this file or folder in the current folder
+---
+''}
 <!--s-->
-```nix
-${builtins.readFile ./step-3/flake.nix}
-```
+${let step = file "4"; in ''
+${step {filename = "flake"; extension = "nix";}}
 <!--v-->
-```console
-${builtins.readFile ./step-3/bash.sh}
-```
+${step {filename = "bash"; extension = "sh"; }}
+''}
 <!--s-->
-```nix
-${builtins.readFile ./step-4/flake.nix}
-```
+${let step = file "5"; in ''
+${step {filename = "commands"; extension = "nix"; }}
 <!--v-->
-```console
-${builtins.readFile ./step-4/bash.sh}
-```
+${step {filename = "flake"; extension = "nix"; }}
+<!--v-->
+${step {filename = "bash"; extension = "sh"; }}
+''}
 <!--s-->
-```nix
-${builtins.readFile ./step-5/commands.nix}
-```
+${let step = file "6"; in ''
+${step {filename = "commands"; extension = "nix"; }}
 <!--v-->
-```nix
-${builtins.readFile ./step-5/flake.nix}
-```
+${step {filename = "flake"; extension = "nix"; }}
 <!--v-->
-```console
-${builtins.readFile ./step-5/bash.sh}
-```
+${step {filename = "bash"; extension = "sh"; }}
+''}
 <!--s-->
-```nix
-${builtins.readFile ./step-6/commands.nix}
-```
+${let step = file "7"; in ''
+${step {filename = "commands"; extension = "nix"; }}
 <!--v-->
-```nix
-${builtins.readFile ./step-6/flake.nix}
-```
+${step {filename = "flake"; extension = "nix"; }}
 <!--v-->
-```console
-${builtins.readFile ./step-6/bash.sh}
-```
+${step {filename = "bash"; extension = "sh"; }}
+''}
 <!--s-->
-```nix
-${builtins.readFile ./step-7/commands.nix}
-```
+${let step = file "8"; in ''
+${step {filename = "commands"; extension = "nix"; }}
 <!--v-->
-```nix
-${builtins.readFile ./step-7/flake.nix}
-```
+${step {filename = "bash"; extension = "sh"; }}
 <!--v-->
-```console
-${builtins.readFile ./step-7/bash.sh}
-```
+${step {filename = "flake"; extension = "nix"; }}
+''}
 <!--s-->
-```nix
-${builtins.readFile ./step-8/commands.nix}
-```
-<!--v-->
-```console
-${builtins.readFile ./step-8/bash.sh}
-```
-<!--v-->
-```nix
-${builtins.readFile ./step-8/flake.nix}
-```
+# Live Coding
+![live-coding](./images/live-coding.jpeg) <!-- .element width="90%" -->
 <!--s-->
-# Demo Time
-<!--s-->
-```nix
-${builtins.readFile ./step-9/commands.nix}
-```
-<!--v-->
-```nix
-${builtins.readFile ./step-9/flake.nix}
-```
+# Q & A
         '';
       }} slides.md
   '';
