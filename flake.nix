@@ -16,7 +16,6 @@
 
         playwright
         carbon-now-cli
-        main
       ];
     };
 
