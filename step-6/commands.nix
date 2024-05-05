@@ -8,4 +8,4 @@ let commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
         nix develop -c -- ${self.start-server}
     '';
 });
-in pkgs.lib.mapAttrs (key: command: pkgs.writeShellScriptBin name command) commands
+in pkgs.lib.mapAttrs (name: command: pkgs.writeShellScriptBin name command) commands
