@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> {}
 , prefix ? "lconf"
+, serverIp ? "localhost"
 }:
 let commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
 {
@@ -15,7 +16,7 @@ let commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
       ${self.fable-build-js} && ${self.server-start}
     '';
     server-get = ''
-      ${pkgs.curl}/bin/curl localhost:3000
+      ${pkgs.curl}/bin/curl ${serverIp}:3000
     '';
 
     fable-build = ''
@@ -49,6 +50,7 @@ let commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
     rust-cli-get-from-server = ''
       ${self.server-get} | ${self.rust-cli-run}
     '';
+
 
     rust-cli-test = ''
       echo '{"ecoSystem":"JS","text":"Hello World"}' | ${self.rust-cli-run}
