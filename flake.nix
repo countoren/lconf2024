@@ -1,5 +1,11 @@
 {
-  outputs = { self, nixpkgs }:
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
+  inputs.vims = {
+    url = "github:countoren/vims";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { self, nixpkgs, vims }:
   let system = "x86_64-linux";
   pkgs = import nixpkgs { inherit system;};
   commands = import ./commands.nix { inherit pkgs; };
