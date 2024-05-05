@@ -2,13 +2,6 @@
 , prefix ? "b2n"
 }:
 let 
-  #helpers
-  file = stepNum: { filename, extension, focus?"" }:  ''
-### ${filename}.${extension}
-```${extension} ${focus}
-${builtins.readFile ./step-${stepNum}/${filename}.${extension}}
-```
-  '';
 
   commands = pkgs.lib.fix (self: pkgs.lib.mapAttrs pkgs.writeShellScript
   {
@@ -70,7 +63,7 @@ Note:
 - 👋 **Hello everyone!** I am **Oren**, 
   You can find me on Github, Twitch, Youtube, Gmail as **CountOren**.
 - 💻 **Experience:** 13 years of software engineering: 
-  Nix, F#, C#, C++, Webs, Haskell, Rust, Bash, Linux tools
+  Nix, F#, C#, C++, Web, Haskell, Rust, Bash, Linux tools
 - 👷‍♂️ **Working For:** Carlson Software, We do:
   Mining Engineering, Civil Engineering, Embeeded Engineering...
 - 🧑‍💻 Focused on **Nix** and functional programming to control them all
@@ -80,8 +73,8 @@ Note:
 <!--s-->
 ## Talk Road Map
 
-- How to can use projects/exectuables as variables of FP language
-- The Command Pattern
+- Using Projects/Executables as Variables in FP Language
+- Discovering The Command Pattern while breaking down some Nix Fundamentals
 - Using the Command Pattern to Glue: NodeJS with F# and Rust
 
 note: 
@@ -96,7 +89,7 @@ note:
 - sequence of commands ,manual step in between like installing
 - nix lets you define all the dependencies
 - this called nixfying a project 
-- where should i do my side effects in nix?
+- how should i do my side effects in nix?
 - all the commands into one command
 
 ${"" /* import ./code-slides.nix */}
